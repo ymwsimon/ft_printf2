@@ -6,7 +6,7 @@
 /*   By: mayeung <mayeung@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:53:46 by mayeung           #+#    #+#             */
-/*   Updated: 2023/09/11 17:53:47 by mayeung          ###   ########.fr       */
+/*   Updated: 2023/11/11 17:14:07 by mayeung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,8 @@ size_t	ft_strlen(char *s)
 	size_t	i;
 
 	i = 0;
-	if (s)
-	{
-		while (s[i])
-			i++;
-	}
+	while (s && s[i])
+		i++;
 	return (i);
 }
 
@@ -29,25 +26,18 @@ char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
 	size_t	i;
 
-	if (dest && src && n)
+	i = 0;
+	while (dest && src && src[i] && i < n)
 	{
-		i = 0;
-		while (src[i] && i < n)
-		{
-			dest[i] = src[i];
-			i++;
-		}
-		while (i < n)
-			dest[i++] = 0;
+		dest[i] = src[i];
+		i++;
 	}
+	while (dest && i < n)
+		dest[i++] = 0;
 	return (dest);
 }
 
 void	ft_putstr(char *s)
 {
-	size_t	len;
-
-	len = 0;
-	len = ft_strlen(s);
-	write(1, s, len);
+	write(1, s, ft_strlen(s));
 }

@@ -12,8 +12,6 @@
 
 #include "ft_printf.h"
 
-const char	g_table[] = "0123456789abcdef";
-
 size_t	ft_int_length(long int n)
 {
 	size_t	i;
@@ -71,13 +69,13 @@ int	ft_itoa(int n)
 	return ((int)i);
 }
 
-int	ft_utoa(unsigned long int n, int trim, int base, int toupper)
+int	ft_utoa(unsigned long int n, int base, int toupper)
 {
 	size_t	i;
 	char	*res;
+	char	table[17];
 
-	if (trim)
-		n = (unsigned int)n;
+	ft_strncpy(table, "0123456789abcdef", 17);
 	i = ft_uint_length(n, base);
 	res = malloc(sizeof(char) * (i + 1));
 	res[i] = 0;
@@ -85,7 +83,7 @@ int	ft_utoa(unsigned long int n, int trim, int base, int toupper)
 		res = ft_strncpy(res, "0", 2);
 	while (n)
 	{
-		res[i - 1] = g_table[n % base];
+		res[i - 1] = table[n % base];
 		n /= base;
 		i--;
 	}
@@ -94,14 +92,11 @@ int	ft_utoa(unsigned long int n, int trim, int base, int toupper)
 	ft_putstr(res);
 	i = ft_strlen(res);
 	free(res);
-	return ((int)i);
+	return (i);
 }
 
 int	ft_ctoa(int c)
 {
-	char	n;
-
-	n = (char)c;
-	write(1, &n, 1);
+	write(1, &c, 1);
 	return (1);
 }

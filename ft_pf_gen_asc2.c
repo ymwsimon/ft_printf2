@@ -33,28 +33,17 @@ int	ft_percent(void)
 
 int	ft_adrtoa(void *adr)
 {
-	unsigned long int	n;
-	int					i;
+	int	i;
 
 	if (!adr)
 	{
 		ft_putstr("(nil)");
 		return (ft_strlen("(nil)"));
 	}
-	n = (unsigned long int) adr;
 	ft_putstr("0x");
 	i = 2;
-	i += ft_utoa(n, 0, 16, 0);
-	return ((int)i);
-}
-
-int	ft_validarg(char c)
-{
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i')
-		return (1);
-	if (c == 'u' || c == 'x' || c == 'X' || c == '%')
-		return (1);
-	return (0);
+	i += ft_utoa((unsigned long int) adr, 16, 0);
+	return (i);
 }
 
 int	ft_stoa(char *str)
