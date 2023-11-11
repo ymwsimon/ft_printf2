@@ -21,7 +21,7 @@ int	main(int arc, char **arv)
 	printf("og version : ");
 	res = printf(format, c, str, i, &i, h, n);
 	printf("length %d\n", res);
-	printf("test% d\n", i);
+	printf("test%#X\n", h);
 	return (0);
 }
 
