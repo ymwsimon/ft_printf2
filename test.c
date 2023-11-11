@@ -12,6 +12,7 @@ int	main(int arc, char **arv)
 	int	h = 245235;
 	int n = -400;
 	char format[] = "char = %c, str = %s, i = %d, &i = %p, h = %x, n = %u, percent = %%  \n";
+	char format2[] = "char = %c, str = %s, i = %d, &i = %p, h = %x, n = %u, percent = %%  \n";
 	int res;
 
 	ft_printf("ft version : ");
@@ -20,6 +21,7 @@ int	main(int arc, char **arv)
 	printf("og version : ");
 	res = printf(format, c, str, i, &i, h, n);
 	printf("length %d\n", res);
+	printf("test% d\n", i);
 	return (0);
 }
 
