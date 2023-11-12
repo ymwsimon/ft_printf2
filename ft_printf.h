@@ -6,7 +6,7 @@
 /*   By: mayeung <mayeung@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:53:52 by mayeung           #+#    #+#             */
-/*   Updated: 2023/11/11 17:26:39 by mayeung          ###   ########.fr       */
+/*   Updated: 2023/11/12 16:30:49 by mayeung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ int		ft_itoa(int n);
 int		ft_utoa(unsigned long int n, int base, int toupper);
 
 int		ft_ctoa(int c);
-
-void	ft_strtoupper(char *s);
-
-int		ft_percent(void);
 
 int		ft_adrtoa(void *adr);
 

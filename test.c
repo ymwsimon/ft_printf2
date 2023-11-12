@@ -11,15 +11,15 @@ int	main(int arc, char **arv)
 	int	i = 20;
 	int	h = 245235;
 	int n = -400;
-	char format[] = "char = %c, str = %s, i = %d, &i = %p, h = %x, n = %u, percent = %%  \n";
-	char format2[] = "char = %c, str = %s, i = %d, &i = %p, h = %x, n = %u, percent = %%  \n";
+	char format[] = "char = %c, str = %s, i = %d, &i = %p, h = %x, H = %X, n = %u, percent = %%  \n";
+	char format2[] = "char = %c, str = %s, i = %d, &i = %p, h = %x, H = %X, n = %u, percent = %%  \n";
 	int res;
 
 	ft_printf("ft version : ");
-	res = ft_printf(format, c, str, i, &i, h, n);
+	res = ft_printf(format, c, str, i, &i, h, h, n);
 	ft_printf("length %d\n", res);
 	printf("og version : ");
-	res = printf(format, c, str, i, &i, h, n);
+	res = printf(format, c, str, i, &i, h, h, n);
 	printf("length %d\n", res);
 	printf("test%#X\n", h);
 	return (0);

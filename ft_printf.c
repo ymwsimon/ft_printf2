@@ -6,7 +6,7 @@
 /*   By: mayeung <mayeung@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:53:49 by mayeung           #+#    #+#             */
-/*   Updated: 2023/11/11 17:26:29 by mayeung          ###   ########.fr       */
+/*   Updated: 2023/11/12 16:29:55 by mayeung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_print_pattern(char t, va_list ap)
 	else if (t == 'X')
 		res += ft_utoa((unsigned int)va_arg(ap, int), 16, 1);
 	else if (t == '%')
-		res += ft_percent();
+		res += ft_ctoa('%');
 	return (res);
 }
 

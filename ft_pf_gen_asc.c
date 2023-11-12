@@ -12,34 +12,6 @@
 
 #include "ft_printf.h"
 
-size_t	ft_int_length(long int n)
-{
-	size_t	i;
-
-	i = 1;
-	if (n < 0)
-		i = 2;
-	while (n / 10)
-	{
-		n /= 10;
-		i++;
-	}
-	return (i);
-}
-
-size_t	ft_uint_length(unsigned long int n, int base)
-{
-	size_t	i;
-
-	i = 1;
-	while (n / base)
-	{
-		n /= base;
-		i++;
-	}
-	return (i);
-}
-
 int	ft_itoa(int n)
 {
 	size_t	i;
@@ -76,6 +48,8 @@ int	ft_utoa(unsigned long int n, int base, int toupper)
 	char	table[17];
 
 	ft_strncpy(table, "0123456789abcdef", 17);
+	if (toupper)
+		ft_strncpy(table, "0123456789ABCDEF", 17);
 	i = ft_uint_length(n, base);
 	res = malloc(sizeof(char) * (i + 1));
 	res[i] = 0;
@@ -87,8 +61,6 @@ int	ft_utoa(unsigned long int n, int base, int toupper)
 		n /= base;
 		i--;
 	}
-	if (toupper)
-		ft_strtoupper(res);
 	ft_putstr(res);
 	i = ft_strlen(res);
 	free(res);
@@ -100,3 +72,29 @@ int	ft_ctoa(int c)
 	write(1, &c, 1);
 	return (1);
 }
+
+int	ft_adrtoa(void *adr)
+{
+	int	i;
+
+	if (!adr)
+	{
+		ft_putstr("(nil)");
+		return (ft_strlen("(nil)"));
+	}
+	ft_putstr("0x");
+	i = 2;
+	i += ft_utoa((unsigned long int) adr, 16, 0);
+	return (i);
+}
+
+int	ft_stoa(char *str)
+{
+	if (str)
+	{
+		ft_putstr(str);
+		return ((int)ft_strlen(str));
+	}
+	ft_putstr("(null)");
+	return ((int)ft_strlen("(null)"));
+}	
