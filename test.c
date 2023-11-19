@@ -6,12 +6,12 @@
 int	main(int arc, char **arv)
 {
 	char c = '\0';
-	char str[] = "-1234-";
+	char str[] = "-abcdefghijklmnopqrstuvwxyz-";
 	char nstr = 0;
-	int	i = 20;
+	int	i = 20234878;
 	int	h = 245235;
 	int n = -400;
-	char format[] = "char = %c, str = %s, i = %d, &i = %p, h = %x, H = %X, n = %u, percent = %%  \n";
+	char format[] = "char = %2c, str = %#-.20s, i = %010.5d, &i = %#p, h = % x, H = %  #X, n = % #+060.30u, percent = %%  \n";
 	char format2[] = "char = %c, str = %s, i = %d, &i = %p, h = %x, H = %X, n = %u, percent = %%  \n";
 	int res;
 
@@ -19,9 +19,9 @@ int	main(int arc, char **arv)
 	res = ft_printf(format, c, str, i, &i, h, h, n);
 	ft_printf("length %d\n", res);
 	printf("og version : ");
-	res = printf(format, c, str, i, &i, h, h, n);
+	res = printf("char =%2c, str =%-.20s, i =% 020d, &i =%p, h =%x, H =%#X, n =%60.30u, percent =%%\n", c, str, i, &i, h, h, n);
 	printf("length %d\n", res);
-	printf("test%#X\n", h);
+	printf("test%s\n", str);
 	return (0);
 }
 
