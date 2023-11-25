@@ -6,7 +6,7 @@
 /*   By: mayeung <mayeung@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:57:13 by mayeung           #+#    #+#             */
-/*   Updated: 2023/11/25 18:58:47 by mayeung          ###   ########.fr       */
+/*   Updated: 2023/11/25 21:15:50 by mayeung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_printi(int n, t_flag *f)
 	char	*iasc;
 
 	iasc = ft_itoa(n);
-	if (f && f->has_prec && !f->prec)
+	if (f && f->has_prec && !f->prec && !n)
 		iasc[0] = 0;
 	if (n < 0)
 		ft_memmove(iasc, iasc + 1, ft_strlen(iasc));
@@ -73,15 +73,17 @@ int	ft_printuh(unsigned int n, t_flag *f, char type)
 		nasc = ft_utoa(n, 10, 0);
 	if (f && f->prec > ft_strlen(nasc))
 		nasc = join_free(gen_pad('0', f->prec - ft_strlen(nasc)), nasc);
+	if (f && ((f->minlen > (ft_strlen(nasc) + f->sharp * 2) && n) || \
+	(f->minlen > ft_strlen(nasc) && !n)) && f->zero && !f->has_prec)
+		nasc = join_free(gen_pad('0', \
+		f->minlen - ((n != 0) * f->sharp * 2) - ft_strlen(nasc)), nasc);
 	if (f && f->sharp && n && type == 'x')
 		nasc = join_free(ft_strdup("0x"), nasc);
 	else if (f && f->sharp && n && type == 'X')
 		nasc = join_free(ft_strdup("0X"), nasc);
 	if (f && f->minlen > ft_strlen(nasc) && f->left)
 		nasc = join_free(nasc, gen_pad(' ', f->minlen - ft_strlen(nasc)));
-	else if (f && f->minlen > ft_strlen(nasc) && f->zero && !f->has_prec)
-		nasc = join_free(gen_pad('0', f->minlen - ft_strlen(nasc)), nasc);
-	else if (f && f->minlen > ft_strlen(nasc))
+	if (f && f->minlen > ft_strlen(nasc))
 		nasc = join_free(gen_pad(' ', f->minlen - ft_strlen(nasc)), nasc);
 	return (print_len_free(nasc));
 }
@@ -95,6 +97,8 @@ int	ft_printp(void *p, t_flag *f)
 	else
 	{
 		pasc = ft_utoa((unsigned long int) p, 16, 0);
+		if (f && f->prec > ft_strlen(pasc))
+			pasc = join_free(gen_pad('0', f->prec - (ft_strlen(pasc))), pasc);
 		pasc = join_free(ft_strdup("0x"), pasc);
 	}
 	if (f && f->minlen > ft_strlen(pasc))

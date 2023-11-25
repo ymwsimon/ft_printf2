@@ -1,6 +1,6 @@
 
 
-#include "ft_printf_bonus.h"
+#include "ft_printf.h"
 #include <stdio.h>
 
 int	main(void)
@@ -29,9 +29,9 @@ int	main(void)
 	char str[50] = "abcdefghi";
 	char	*t = 0;
 
-	res = printf("og:=%1$=\n", 0);
+	res = printf("og:=%20.0d=\n", 10);
 	printf("length=%d\n", res);
-	res = ft_printf("ft:=%.0u=\n", 0);
+	res = ft_printf("ft:=%20.0d=\n", 10);
 	printf("length=%d\n", res);
 	return (0);
 }

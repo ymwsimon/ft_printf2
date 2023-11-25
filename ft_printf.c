@@ -6,7 +6,7 @@
 /*   By: mayeung <mayeung@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:53:49 by mayeung           #+#    #+#             */
-/*   Updated: 2023/11/25 18:59:01 by mayeung          ###   ########.fr       */
+/*   Updated: 2023/11/25 21:15:32 by mayeung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,15 +110,16 @@ int	ft_printf(const char *fmt, ...)
 		{
 			if (fmt[1])
 			{	
-				res += ft_print_pattern((char *)fmt + 1, ap);
 				fmt++;
+				res += ft_print_pattern((char *)fmt, ap);
 			}
 			while (*fmt && !ft_strchr("cidpsuxX%", *fmt))
 				fmt++;
 		}
 		else
 			res += ft_printc(*fmt, NULL);
-		fmt++;
+		if (*fmt)
+			fmt++;
 	}
 	va_end(ap);
 	return (res);
