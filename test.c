@@ -1,27 +1,38 @@
 
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 #include <stdio.h>
 
-int	main(int arc, char **arv)
+int	main(void)
 {
-	char c = '\0';
+	/*char c = 'E';
 	char str[] = "-abcdefghijklmnopqrstuvwxyz-";
-	char nstr = 0;
+	//char nstr = 0;
 	int	i = 20234878;
 	int	h = 245235;
 	int n = -400;
 	char format[] = "char = %2c, str = %#-.20s, i = %010.5d, &i = %#p, h = % x, H = %  #X, n = % #+060.30u, percent = %%  \n";
-	char format2[] = "char = %c, str = %s, i = %d, &i = %p, h = %x, H = %X, n = %u, percent = %%  \n";
+	//char format2[] = "char = %c, str = %s, i = %d, &i = %p, h = %x, H = %X, n = %u, percent = %%  \n";
 	int res;
 
 	ft_printf("ft version : ");
 	res = ft_printf(format, c, str, i, &i, h, h, n);
 	ft_printf("length %d\n", res);
-	printf("og version : ");
-	res = printf("char =%2c, str =%-.20s, i =% 020d, &i =%p, h =%x, H =%#X, n =%60.30u, percent =%%\n", c, str, i, &i, h, h, n);
+	ft_printf("ts version : \n");
+	res = printf("test =char =%2c, str =%-.20s, i =% 020d, &i =%p, h =%x, H =%#X, n =%40.30u, percent =%%\n", c, str, i, &i, h, h, n);
+	res = ft_printf("ftint=%10d\n", i);
 	printf("length %d\n", res);
-	printf("test%s\n", str);
+	res = printf("pfint=%20.10u-\n", i);
+	printf("length %d\n", res);
+	printf("test%s\n", str);*/
+	int res;
+	char str[50] = "abcdefghi";
+	char	*t = 0;
+
+	res = printf("og:=%1$=\n", 0);
+	printf("length=%d\n", res);
+	res = ft_printf("ft:=%.0u=\n", 0);
+	printf("length=%d\n", res);
 	return (0);
 }
 
