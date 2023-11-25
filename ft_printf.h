@@ -6,7 +6,7 @@
 /*   By: mayeung <mayeung@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:53:52 by mayeung           #+#    #+#             */
-/*   Updated: 2023/11/25 18:59:12 by mayeung          ###   ########.fr       */
+/*   Updated: 2023/11/25 19:42:53 by mayeung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-# include "libft.h"
 
 typedef struct s_flag
 {
@@ -53,5 +52,23 @@ int		ft_prints(char *str, t_flag *f);
 char	*gen_pad(char c, size_t n);
 
 int		print_len_free(char *s);
+
+int		ft_atoi(const char *nptr);
+
+void	*ft_memmove(void *dest, const void *src, size_t n);
+
+void	ft_putstr_fd(char *s, int fd);
+
+char	*ft_strdup(const char *s);
+
+char	*ft_strjoin(char const *s1, char const *s2);
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+
+size_t	ft_strlen(const char *s);
+
+char	*ft_strchr(const char *s, int c);
+
+char	*ft_itoa(int n);
 
 #endif
