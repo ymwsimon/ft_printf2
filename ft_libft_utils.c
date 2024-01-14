@@ -6,7 +6,7 @@
 /*   By: mayeung <mayeung@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 19:32:43 by mayeung           #+#    #+#             */
-/*   Updated: 2023/11/25 19:41:45 by mayeung          ###   ########.fr       */
+/*   Updated: 2024/01/14 00:55:40 by mayeung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,14 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	d = dest;
 	s = src;
-	if (s && d)
+	i = (n - 1) * (s < d);
+	while (s && d && i < n)
 	{
-		i = 0;
-		if (s < d)
-			i = n - 1;
-		while (i < n)
-		{
-			d[i] = s[i];
-			if (s > d)
-				i++;
-			else
-				i--;
-		}
+		d[i] = s[i];
+		if (s > d)
+			i++;
+		else
+			i--;
 	}
 	return (dest);
 }
@@ -79,19 +74,13 @@ char	*ft_strdup(const char *s)
 	char	*t;
 
 	i = 0;
-	t = 0;
 	while (s && s[i])
 		i++;
 	t = malloc(sizeof(char) * (i + 1));
+	i = -1;
+	while (t && s && s[++i])
+		t[i] = s[i];
 	if (t)
-	{
-		i = 0;
-		while (s && s[i])
-		{
-			t[i] = s[i];
-			i++;
-		}
 		t[i] = 0;
-	}
 	return (t);
 }

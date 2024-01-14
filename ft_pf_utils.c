@@ -6,7 +6,7 @@
 /*   By: mayeung <mayeung@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:53:46 by mayeung           #+#    #+#             */
-/*   Updated: 2023/11/25 18:58:54 by mayeung          ###   ########.fr       */
+/*   Updated: 2024/01/14 00:58:04 by mayeung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,18 @@ char	*ft_utoa(unsigned long int n, int base, int toupper)
 {
 	size_t	i;
 	char	*res;
-	char	table[17];
+	char	*table;
 
-	ft_strlcpy(table, "0123456789abcdef", 17);
+	table = "0123456789abcdef";
 	if (toupper)
-		ft_strlcpy(table, "0123456789ABCDEF", 17);
+		table = "0123456789ABCDEF";
 	i = ft_uint_length(n, base);
 	res = malloc(sizeof(char) * (i + 1));
-	res[i] = 0;
-	if (!n)
+	if (res)
+		res[i] = 0;
+	if (res && !n)
 		res[0] = '0';
-	while (n)
+	while (res && n)
 	{
 		res[i - 1] = table[n % base];
 		n /= base;
@@ -64,15 +65,14 @@ char	*gen_pad(char c, size_t n)
 	size_t	i;
 
 	res = malloc(sizeof(char) * (n + 1));
-	if (!res)
-		return (res);
 	i = 0;
-	while (i < n)
+	while (res && i < n)
 	{
 		res[i] = c;
 		i++;
 	}
-	res[i] = 0;
+	if (res)
+		res[i] = 0;
 	return (res);
 }
 
@@ -80,7 +80,6 @@ int	print_len_free(char *s)
 {
 	int	res;
 
-	res = 0;
 	res = ft_strlen(s);
 	ft_putstr_fd(s, 1);
 	free(s);

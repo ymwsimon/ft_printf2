@@ -6,7 +6,7 @@
 /*   By: mayeung <mayeung@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 19:34:49 by mayeung           #+#    #+#             */
-/*   Updated: 2023/11/25 19:50:30 by mayeung          ###   ########.fr       */
+/*   Updated: 2024/01/14 00:56:39 by mayeung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,36 +18,14 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 
 	res = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (res)
-	{
-		i = 0;
-		while (s1 && *s1)
-			res[i++] = *s1++;
-		while (s2 && *s2)
-			res[i++] = *s2++;
-		res[i] = 0;
-	}
-	return (res);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
-{
-	size_t	i;
-
 	i = 0;
-	if (dst && src)
-	{
-		while (i + 1 < size && src[i])
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		if (i < size)
-			dst[i] = 0;
-	}
-	while (src && src[i])
-		i++;
-	return (i);
+	while (res && s1 && *s1)
+		res[i++] = *s1++;
+	while (res && s2 && *s2)
+		res[i++] = *s2++;
+	if (res)
+		res[i] = 0;
+	return (res);
 }
 
 size_t	ft_strlen(const char *s)
@@ -70,7 +48,7 @@ char	*ft_strchr(const char *s, int c)
 	}
 	if (s && !c)
 		return ((char *)s);
-	return (0);
+	return (NULL);
 }
 
 char	*ft_itoa(int n)
@@ -87,12 +65,12 @@ char	*ft_itoa(int n)
 		i++;
 	}
 	res = malloc(sizeof(char) * (i + 1));
-	if (!res)
-		return (res);
-	res[i] = 0;
+	if (res)
+		res[i] = 0;
 	sign = 1 * (n >= 0) + -1 * (n < 0);
-	res[0] = '0' * (n == 0) + '-' * (n < 0);
-	while (n)
+	if (res)
+		res[0] = '0' * (n == 0) + '-' * (n < 0);
+	while (res && n)
 	{
 		res[i - 1] = (n % 10) * sign + '0';
 		n /= 10;

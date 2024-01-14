@@ -11,10 +11,10 @@ CC = cc
 $(NAME) : $(OBJS)
 	ar -rcs $(NAME) $(OBJS)
 
-bonus : $(NAME)
+bonus : all
 
-$(OBJS) : $(SRCS)
-	$(CC) $(FLAGS) -c $(SRCS) 
+%.o: %.c
+	$(CC) $(FLAGS) -c $<
 
 all : $(NAME)
 

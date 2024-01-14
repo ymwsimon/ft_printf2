@@ -6,7 +6,7 @@
 /*   By: mayeung <mayeung@student.42london.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:53:52 by mayeung           #+#    #+#             */
-/*   Updated: 2023/11/25 19:42:53 by mayeung          ###   ########.fr       */
+/*   Updated: 2024/01/14 01:00:19 by mayeung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ void	ft_putstr_fd(char *s, int fd);
 char	*ft_strdup(const char *s);
 
 char	*ft_strjoin(char const *s1, char const *s2);
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
 size_t	ft_strlen(const char *s);
 
